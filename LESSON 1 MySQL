@@ -127,19 +127,44 @@ INSERT INTO `employees` VALUES
 --  FROM employees
 --  GROUP BY dept_name, title;
 
+-- LIMITS THE SALARY 
 -- SELECT * FROM employees
 --  WHERE salary >= 60000;
 
+-- ONLY SEARCH FOR THE FEMALE
 -- SELECT dept_name, count(*)
 --  FROM employees
 --  WHERE gender = 'F'
 --  GROUP BY dept_name;
+
+-- ORDER ASC
+-- SELECT lname, salary FROM employees
+-- ORDER BY lname;
+
+-- ORDER BY DESC
+-- SELECT lname, salary FROM employees
+-- ORDER BY lname desc;
+
+-- MULTIPLE ORDER BY
+-- select lname, salary FROM employees
+-- order by lname desc, salary desc;
+
+-- SEARCH FOR THE TOTAL SUM OF SALARY PER DEPT
+-- SELECT dept_name, SUM(salary)
+-- FROM employees
+-- group by dept_name;
 
 -- ONLY Development AND SALES
 --  Select dept_name, lname
 --  FROM employees
 --  WHERE dept_name IN ("Development", "Sales")
 --  ORDER BY dept_name;
+
+-- HAVING ARE FOR AGGRIGATED CONDITION //SUM(salary)
+-- SELECT dept_name, SUM(salary)
+-- FROM employees
+-- group by dept_name
+-- having SUM(salary) >= 600000;
 
 -- NO DEPARTMENT
 --    SELECT dept_name, lname
@@ -172,16 +197,70 @@ INSERT INTO `employees` VALUES
 --  SELECT fname FROM employees
 --  WHERE fname LIKE '____';
 
+-- ACTIVITY
 
+-- 1 Display repcords with more than 70, 000 salary
+-- SELECT * FROM employees
+-- WHERE SALARY > 70000;
 
+-- 2 DISPLAY RECORDS RESIDES IN SALES DEPARTMENT
+-- SELECT * FROM employees
+-- WHERE dept_name = 'Sales';
 
+-- 3 DISPLAY RECORDS RESIDES IN Marketing DEPARTMENT WITH ALPHABETICAL ORDER LAST NAME DISPLAY
+-- SELECT * FROM employees
+-- WHERE dept_name = 'Marketing'
+-- ORDER BY lname;
 
+-- 4 DISPLAY HIGHEST SALARY PER DEPARTMENT IN HIGHEST TO LOWEST ORDER 
+-- SELECT dept_name, MAX(SALARY)
+-- FROM employees
+-- GROUP BY dept_name
+-- ORDER BY MAX(SALARY) desc;
 
+-- 5 HOW MANY STAFF EMPLOYEES PER DEPARTMENT
+-- SELECT dept_name, COUNT(*) AS EMPLOYEES
+-- FROM employees
+-- WHERE title = 'STAFF'
+-- GROUP BY dept_name;
+  
+-- 6 DISPLAY RECORDS OF THE MOST RECENT HIRED PER DEPARTMENT
+-- SELECT dept_name, MAX(hire_date) AS "RECENT HIRE"
+-- FROM employees
+-- GROUP BY dept_name;
 
+-- 7 DISPLAY THE TOTAL SALARY OF EMPLOYEE WH DOESNT HAVE DEPARTMENT RESIDENCY
+-- SELECT SUM(salary) AS total_salary
+-- FROM EMPLOYEE
+-- WHERE dept_name IS NULL;
 
+-- 8 HOW MANY UNIQUE LAST NAME DO WE HAVE ON RECORDS
+-- SELECT COUNT(DISTINCT lname) AS unique_last_names
+-- FROM employees;
 
+-- 9 DISPLAY HOW MANY FEMALES FOR EACH POSITION IN THE DEPARTMENT. CLUSTEER DEPARTMENT FOR EASY VIEWING
+  -- SELECT dept_name, title, COUNT(gender) AS "FEMALE"
+  -- FROM employees
+  -- WHERE gender = 'F'
+  -- GROUP BY dept_name, title
+  -- ORDER BY dept_name;
+  
+-- 10 SELECT EMPLOYEES WITH 3 CHARACTER FIRST NAME
+  -- SELECT fname, lname FROM EMPLOYEES
+  -- WHERE fname LIKE '___';
 
+-- 11 & 12 DISPLAY RECORDS WHO HAS A BIRTHDAY FROM MARCH 1 TO NOVEMBER 16 YEAR OF 1956
+  -- SELECT * FROM employees
+  -- WHERE birth_date BETWEEN "1956-03-01" AND "1956-11-16";
+    
+-- 13 & 14 DISPLAY RECORDS WHO WAS HIRED FROM JUNE 01 TO DECEMBER 15 YEARS OF 1986 UNDER THE DEPARTMENT OF Development
+-- SELECT * FROM employees
+-- WHERE (hire_date BETWEEN "1986-06-01" AND "1986-12-15") AND dept_name = 'Development';
 
+-- 15 HOW MANY HIRED STAFF FROM JANUARY 15 TO OCTOBER 20 YEAR OF 1999
+-- SELECT COUNT(title) FROM employees
+-- WHERE title = 'STAFF'AND 
+-- (hire_date BETWEEN '1999-01-15' AND '1999-10-20');
 
 
 
